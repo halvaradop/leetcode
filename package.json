@@ -1,0 +1,55 @@
+{
+  "name": "@halvaradop/leetcode",
+  "version": "0.1.0",
+  "description": "Leetcode solutions classified by techniques and approaches",
+  "type": "module",
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/halvaradop/leetcode.git"
+  },
+  "keywords": [
+    "leetcode",
+    "problems",
+    "techniques",
+    "approaches",
+    "solutions",
+    "algorithms",
+    "data structures",
+    "dsa"
+  ],
+  "author": "Hernan Alvarado <hernanvid123@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/halvaradop/leetcode/issues"
+  },
+  "homepage": "https://github.com/halvaradop/leetcode#readme",
+  "devDependencies": {
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.2"
+  },
+  "packageManager": "pnpm@10.3.0",
+  "prettier": {
+    "semi": false,
+    "printWidth": 130,
+    "tabWidth": 4,
+    "overrides": [
+      {
+        "files": [
+          "*.json",
+          "*.md",
+          "*.yml",
+          "*.yaml"
+        ],
+        "options": {
+          "tabWidth": 2
+        }
+      }
+    ]
+  }
+}
