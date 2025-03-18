@@ -1,6 +1,6 @@
 # @halvaradop/leetcode
 
-This repository contains a collection of LeetCode problems and their solutions, implementing various techniques and approaches to solve them. The aim of this repository is to demonstrate knowledge and preparation for technical interviews. The solutions to the problems are built in TypeScript. For more details and information about LeetCode problems, please visit the [official website](https://leetcode.com). Each approach and technique will be located in different folders, each containing their own README.md files with detailed information.
+This repository contains a collection of LeetCode problems and their solutions, implementing various techniques and approaches to solve them. The aim of this repository is to demonstrate knowledge and preparation for technical interviews. The solutions to the problems are built in TypeScript. For more details and information about LeetCode problems, please visit the [official website](https://leetcode.com). Each approach and technique will be located in different folders, each containing their own `README.md` files with detailed information.
 
 ## Structure
 
@@ -20,7 +20,7 @@ The repository follows the structure below:
 
 ## Contributing
 
-We welcome contributions to `@halvaradop/ts-utility-types`! If you have an idea for a new type or find an improvement to an existing one, please feel free to open an issue or create a pull request. We offer a guide on how to contribute to the project and the necessary steps to do so. Here's how you can contribute, Read our [Contribuing Guideline](https://github.com/halvaradop/.github/blob/master/.github/CONTRIBUTING.md).
+We welcome contributions to `@halvaradop/leetcode`! If you have an idea for a new type or find an improvement to an existing one, please feel free to open an issue or create a pull request. We offer a guide on how to contribute to the project and the necessary steps to do so. Here's how you can contribute, Read our [Contribuing Guideline](https://github.com/halvaradop/.github/blob/master/.github/CONTRIBUTING.md).
 
 ## Code of conduct
 
