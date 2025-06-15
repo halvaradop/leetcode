@@ -13,6 +13,7 @@
  *
  * - Return k.
  *
+ * @link https://leetcode.com/problems/remove-element/
  * @param {number[]} nums - The input array of numbers
  * @param {number} val - The value to remove from the array
  * @returns {number} - The new length of the array after removing all instances of val
