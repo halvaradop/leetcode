@@ -17,6 +17,12 @@
  * @param {number[]} nums - The input array of numbers
  * @param {number} val - The value to remove from the array
  * @returns {number} - The new length of the array after removing all instances of val
+ * @example
+ * // Expected: 2
+ * removeElement([3,2,2,3], 3)
+ *
+ * // Expected: 5
+ * removeElement([0,1,2,2,3,0,4,2], 2)
  */
 export const removeElement = (nums: number[], val: number): number => {
     const n = nums.length
