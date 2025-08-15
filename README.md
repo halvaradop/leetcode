@@ -1,27 +1,45 @@
-# @halvaradop/leetcode
+# leetcode-docs
 
-This repository contains a collection of LeetCode problems and their solutions, implementing various techniques and approaches to solve them. The aim of this repository is to demonstrate knowledge and preparation for technical interviews. The solutions to the problems are built in TypeScript. For more details and information about LeetCode problems, please visit the [official website](https://leetcode.com). Each approach and technique will be located in different folders, each containing their own `README.md` files with detailed information.
+This is a Next.js application generated with
+[Create Fumadocs](https://github.com/fuma-nama/fumadocs).
 
-## Structure
+Run development server:
 
-The repository follows the structure below:
-
-```sh
-│
-├── src/                        # Source code
-│    ├─ two-pointers            # Problems that require the `Two Pointers` technique
-│    └── README.md              # General description of the `Two Pointers` technique
-└── README.md                   # General description
+```bash
+npm run dev
+# or
+pnpm dev
+# or
+yarn dev
 ```
 
-## Algorithms
+Open http://localhost:3000 with your browser to see the result.
 
-- [Two Pointers](./src/two-pointers/)
+## Explore
 
-## Contributing
+In the project, you can see:
 
-We welcome contributions to `@halvaradop/leetcode`! If you have an idea for a new type or find an improvement to an existing one, please feel free to open an issue or create a pull request. We offer a guide on how to contribute to the project and the necessary steps to do so. Here's how you can contribute, Read our [Contribuing Guideline](https://github.com/halvaradop/.github/blob/master/.github/CONTRIBUTING.md).
+- `lib/source.ts`: Code for content source adapter, [`loader()`](https://fumadocs.dev/docs/headless/source-api) provides the interface to access your content.
+- `app/layout.config.tsx`: Shared options for layouts, optional but preferred to keep.
 
-## Code of conduct
+| Route                     | Description                                            |
+| ------------------------- | ------------------------------------------------------ |
+| `app/(home)`              | The route group for your landing page and other pages. |
+| `app/docs`                | The documentation layout and pages.                    |
+| `app/api/search/route.ts` | The Route Handler for search.                          |
 
-Please be aware that this project has a code of conduct, and we expect all contributors to follow these guidelines in their interactions. For more information, please read our [Code of Conduct](https://github.com/halvaradop/.github/blob/master/.github/CODE_OF_CONDUCT.md).
+### Fumadocs MDX
+
+A `source.config.ts` config file has been included, you can customise different options like frontmatter schema.
+
+Read the [Introduction](https://fumadocs.dev/docs/mdx) for further details.
+
+## Learn More
+
+To learn more about Next.js and Fumadocs, take a look at the following
+resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js
+  features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Fumadocs](https://fumadocs.vercel.app) - learn about Fumadocs
