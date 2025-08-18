@@ -1,10 +1,10 @@
-import { createMDX } from 'fumadocs-mdx/next';
+import { createMDX } from "fumadocs-mdx/next"
 
 const config = {
-  reactStrictMode: true,
-  serverExternalPackages: ['typescript', 'twoslash'],
-};
+    reactStrictMode: true,
+    serverExternalPackages: ["typescript", "twoslash"],
+}
 
-const withMDX = createMDX();
+const withMDX = createMDX()
 
-export default withMDX(config);
+export default withMDX(config)

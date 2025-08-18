@@ -1,0 +1,74 @@
+---
+title: 2570. Merge Two 2D Arrays by Summing Values
+description: Merge two 2D arrays by summing values with the same first element.
+---
+
+# 2570. Merge Two 2D Arrays by Summing Values
+
+## Description
+
+Given two 2D arrays, merge them by summing values with the same first element. Return the merged array sorted by the first element.
+
+Link to: https://leetcode.com/problems/merge-two-2d-arrays-by-summing-values/
+
+| Parameter | Type       | Description          |
+| --------- | ---------- | -------------------- |
+| nums1     | number[][] | The first 2D array.  |
+| nums2     | number[][] | The second 2D array. |
+
+## Solution
+
+### Code
+
+```ts title="2570. Merge Two 2D Arrays by Summing Values"
+export const mergeArrays = (nums1: number[][], nums2: number[][]): number[][] => {
+  let idx2 = 0
+  let idx1 = 0
+  const merge = []
+  const n = nums1.length
+  const m = nums2.length
+  while (idx1 < n && idx2 < m) {
+    if (nums1[idx1][0] === nums2[idx2][0]) {
+      merge.push([nums1[idx1][0], nums1[idx1][1] + nums2[idx2][1]])
+      idx1++
+      idx2++
+    } else if (nums1[idx1][0] < nums2[idx2][0]) {
+      merge.push([nums1[idx1][0], nums1[idx1][1]])
+      idx1++
+    } else {
+      merge.push([nums2[idx2][0], nums2[idx2][1]])
+      idx2++
+    }
+  }
+  while (idx1 < n) {
+    merge.push([nums1[idx1][0], nums1[idx1][1]])
+    idx1++
+  }
+  while (idx2 < m) {
+    merge.push([nums2[idx2][0], nums2[idx2][1]])
+    idx2++
+  }
+  return merge
+}
+```
+
+```ts
+// Expected: [[1,4],[2,5],[3,7]]
+mergeArrays(
+  [
+    [1, 2],
+    [2, 3],
+    [3, 4],
+  ],
+  [
+    [1, 2],
+    [3, 3],
+  ],
+)
+```
+
+### Time Complexity
+
+| Time Complexity | Space Complexity |
+| --------------- | ---------------- |
+| O(n + m)        | O(n + m)         |

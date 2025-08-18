@@ -1,0 +1,57 @@
+---
+title: 977. Squares of a Sorted Array
+description: Return an array of the squares of each number sorted in non-decreasing order.
+---
+
+# 977. Squares of a Sorted Array
+
+## Description
+
+Given an array of integers sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order.
+
+Link to: https://leetcode.com/problems/squares-of-a-sorted-array/
+
+| Parameter | Type     | Description                   |
+| --------- | -------- | ----------------------------- |
+| nums      | number[] | The sorted array of integers. |
+
+## Solution
+
+### Code
+
+```ts title="977. Squares of a Sorted Array"
+export const sortedSquares = (nums: number[]): number[] => {
+  const n = nums.length
+  let left = 0
+  let right = n - 1
+  let index = n - 1
+  const sorted = Array.from<number>({ length: n }).fill(0)
+  for (let i = 0; i < n; i++) {
+    const leftValue = nums[left] * nums[left]
+    const rightValue = nums[right] * nums[right]
+    if (rightValue > leftValue) {
+      sorted[index] = rightValue
+      right--
+    } else {
+      sorted[index] = leftValue
+      left++
+    }
+    index--
+  }
+  return sorted
+}
+```
+
+```ts
+// Expected: [0,1,9,16,100]
+sortedSquares([-4, -1, 0, 3, 10])
+
+// Expected: [4,9,9,49,121]
+sortedSquares([-7, -3, 2, 3, 11])
+```
+
+### Time Complexity
+
+| Time Complexity | Space Complexity |
+| --------------- | ---------------- |
+| O(n)            | O(n)             |

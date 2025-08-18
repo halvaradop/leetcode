@@ -1,0 +1,57 @@
+---
+title: 455. Assign Cookies
+description: Assign cookies to children to maximize the number of content children.
+---
+
+# 455. Assign Cookies
+
+## Description
+
+Given two arrays representing children's greed factors and cookie sizes, assign cookies to maximize the number of content children. Each child can have at most one cookie.
+
+Link to: https://leetcode.com/problems/assign-cookies/
+
+| Parameter | Type     | Description                        |
+| --------- | -------- | ---------------------------------- |
+| greed     | number[] | The greed factors of the children. |
+| cookies   | number[] | The sizes of the cookies.          |
+
+## Solution
+
+### Code
+
+```ts title="455. Assign Cookies"
+export const findContentChildren = (greed: number[], cookies: number[]): number => {
+  let idxGreed = 0
+  let idxCookies = 0
+  const n = greed.length
+  const m = cookies.length
+  let countContentChildren = 0
+  greed.sort((x, y) => x - y)
+  cookies.sort((x, y) => x - y)
+  while (idxGreed < n && idxCookies < m) {
+    if (cookies[idxCookies] >= greed[idxGreed]) {
+      idxGreed++
+      idxCookies++
+      countContentChildren++
+    } else {
+      idxCookies++
+    }
+  }
+  return countContentChildren
+}
+```
+
+```ts
+// Expected: 1
+findContentChildren([1, 2, 3], [1, 1])
+
+// Expected: 2
+findContentChildren([1, 2], [1, 2, 3])
+```
+
+### Time Complexity
+
+| Time Complexity      | Space Complexity |
+| -------------------- | ---------------- |
+| O(n log n + m log m) | O(1)             |

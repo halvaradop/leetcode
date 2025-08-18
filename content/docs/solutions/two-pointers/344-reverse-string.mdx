@@ -1,0 +1,46 @@
+---
+title: 344. Reverse String
+description: Reverse an array of characters in-place.
+---
+
+# 344. Reverse String
+
+## Description
+
+Write a function that reverses an array of characters in-place.
+
+Link to: https://leetcode.com/problems/reverse-string/
+
+| Parameter | Type     | Description                         |
+| --------- | -------- | ----------------------------------- |
+| str       | string[] | The array of characters to reverse. |
+
+## Solution
+
+### Code
+
+```ts title="344. Reverse String"
+export const reverseString = (str: string[]): void => {
+  const n = str.length
+  let left = 0
+  let right = n - 1
+  while (left < right) {
+    const swap = str[left]
+    str[left++] = str[right]
+    str[right--] = swap
+  }
+}
+```
+
+```ts
+// Expected: ["o","l","l","e","h"]
+const arr = ["h", "e", "l", "l", "o"]
+reverseString(arr)
+arr
+```
+
+### Time Complexity
+
+| Time Complexity | Space Complexity |
+| --------------- | ---------------- |
+| O(n)            | O(1)             |

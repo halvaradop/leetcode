@@ -1,0 +1,63 @@
+---
+title: 680. Valid Palindrome II
+description: Check if a string can be a palindrome after deleting at most one character.
+---
+
+# 680. Valid Palindrome II
+
+## Description
+
+Given a string, return true if it can be a palindrome after deleting at most one character.
+
+Link to: https://leetcode.com/problems/valid-palindrome-ii/
+
+| Parameter | Type   | Description          |
+| --------- | ------ | -------------------- |
+| s         | string | The string to check. |
+
+## Solution
+
+### Code
+
+```ts title="680. Valid Palindrome II"
+export const validPalindrome = (str: string): boolean => {
+  const n = str.length
+  let left = 0
+  let right = n - 1
+  while (left < right) {
+    if (str[left] !== str[right]) {
+      return isPalindrome(str, left + 1, right) || isPalindrome(str, left, right - 1)
+    }
+    left++
+    right--
+  }
+  return true
+}
+
+const isPalindrome = (s: string, low: number, high: number): boolean => {
+  let left = low
+  let right = high
+  while (left < right) {
+    if (s[left] !== s[right]) {
+      return false
+    }
+    left++
+    right--
+  }
+  return true
+}
+```
+
+```ts
+// Expected: true
+validPalindrome("abca")
+
+// Expected: false
+validPalindrome("abc")
+```
+
+### Time Complexity
+
+| Time Complexity | Space Complexity |
+| --------------- | ---------------- |
+| O(n)            | O(1)             |

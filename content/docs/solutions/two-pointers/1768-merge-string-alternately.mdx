@@ -1,0 +1,54 @@
+---
+title: 1768. Merge Strings Alternately
+description: Merge two strings alternately, starting with the first string.
+---
+
+# 1768. Merge Strings Alternately
+
+## Description
+
+Given two strings, merge them by alternating characters from each string, starting with the first string. If one string is longer, append the remaining characters at the end.
+
+Link to: https://leetcode.com/problems/merge-strings-alternately/
+
+| Parameter | Type   | Description                 |
+| --------- | ------ | --------------------------- |
+| word1     | string | The first string to merge.  |
+| word2     | string | The second string to merge. |
+
+## Solution
+
+### Code
+
+```ts title="1768. Merge Strings Alternately"
+export const mergeAlternately = (word1: string, word2: string): string => {
+  let idx1 = 0
+  let idx2 = 0
+  let merge = ""
+  const n = word1.length
+  const m = word2.length
+  while (idx1 < n || idx2 < m) {
+    if (idx1 < n) {
+      merge += word1[idx1++]
+    }
+    if (idx2 < m) {
+      merge += word2[idx2++]
+    }
+  }
+  return merge
+}
+```
+
+```ts
+// Expected: "apbqrc"
+mergeAlternately("abc", "pqr")
+
+// Expected: "abpqrs"
+mergeAlternately("ab", "pqrs")
+```
+
+### Time Complexity
+
+| Time Complexity | Space Complexity |
+| --------------- | ---------------- |
+| O(n + m)        | O(1)             |
