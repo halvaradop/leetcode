@@ -1,0 +1,6 @@
+{
+  "title": "Leetcode Solutions",
+  "description": "This layout contains the solutions to various Leetcode problems.  ",
+  "pages": ["index", "two-pointers"],
+  "defaultOpen": false
+}

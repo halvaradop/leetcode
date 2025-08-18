@@ -1,5 +1,6 @@
 {
   "pages": [
+    "index",
     "26-remove-duplicates-from-sorted-array",
     "27-remove-element",
     "344-reverse-string",
