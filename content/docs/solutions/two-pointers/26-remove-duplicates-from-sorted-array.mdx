@@ -24,7 +24,7 @@ removeDuplicates([1, 1, 2])
 removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4])
 ```
 
-## Objetive
+## Objective
 
 Transform the input array so that the first `k` elements contain only the unique values from the original array in their original relative order. The rest of the array can be ignored. Return `k`.
 
@@ -32,7 +32,7 @@ Transform the input array so that the first `k` elements contain only the unique
 
 This is a two-pointer problem — a common pattern when working with sorted arrays and in-place operations.
 
-### Intuiton
+### Intuition
 
 Since the array is sorted, all duplicates are adjacent. Our goal is to overwrite duplicates by shifting unique values to the left side of the array, without using extra space.
 
@@ -91,3 +91,7 @@ export const removeDuplicates = (nums: number[]): number => {
 | O(n)            | O(1)             |
 
 ## Notes
+
+### Related problems
+
+- Remove Element: (/27-remove-element)
