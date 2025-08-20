@@ -3,20 +3,55 @@ title: 2570. Merge Two 2D Arrays by Summing Values
 description: Merge two 2D arrays by summing values with the same first element.
 ---
 
-# 2570. Merge Two 2D Arrays by Summing Values
+# 2570. Merge Two 2D Arrays by Summing Values – Easy
 
-## Description
+## 🧾 Description
 
-Given two 2D arrays, merge them by summing values with the same first element. Return the merged array sorted by the first element.
+You are given two 2D arrays `nums1` and `nums2`, where each array contains pairs of integers in the format `[id, value]`. Both arrays are sorted in ascending order by `id`.
 
-Link to: https://leetcode.com/problems/merge-two-2d-arrays-by-summing-values/
+Return a new array by **merging** the two input arrays. If an `id` exists in both arrays, **sum their values**. The result should also be **sorted** by `id`.
 
-| Parameter | Type       | Description          |
-| --------- | ---------- | -------------------- |
-| nums1     | number[][] | The first 2D array.  |
-| nums2     | number[][] | The second 2D array. |
+🔗 [View on LeetCode](https://leetcode.com/problems/merge-two-2d-arrays-by-summing-values/)
 
-## Solution
+### Example
+
+```ts
+// Expected: [[1,4],[2,5],[3,7]]
+mergeArrays(
+  [
+    [1, 2],
+    [2, 3],
+    [3, 4],
+  ],
+  [
+    [1, 2],
+    [3, 3],
+  ],
+)
+```
+
+## Objective
+
+Merge two sorted 2D arrays by id. When the same id appears in both arrays, their values are added. When the id exists in only one array, the [id, value] is included directly.
+
+## Approach
+
+This is a two-pointer merge problem — commonly used when merging sorted lists.
+
+### Intuition
+
+Because both input arrays are sorted, we can process them efficiently with two pointers without using extra sorting or hash maps.
+
+### Strategy
+
+- Initialize two pointers idx1 and idx2 for nums1 and nums2.
+- Traverse both arrays:
+  - If the IDs are equal → sum the values.
+  - If one ID is smaller → push the current entry and advance that pointer.
+
+- After the loop, append any remaining elements from either array.
+
+This ensures the result remains sorted and covers all IDs.
 
 ### Code
 
@@ -52,23 +87,10 @@ export const mergeArrays = (nums1: number[][], nums2: number[][]): number[][] =>
 }
 ```
 
-```ts
-// Expected: [[1,4],[2,5],[3,7]]
-mergeArrays(
-  [
-    [1, 2],
-    [2, 3],
-    [3, 4],
-  ],
-  [
-    [1, 2],
-    [3, 3],
-  ],
-)
-```
-
 ### Time Complexity
 
 | Time Complexity | Space Complexity |
 | --------------- | ---------------- |
 | O(n + m)        | O(n + m)         |
+
+## Notes
