@@ -3,21 +3,70 @@ title: 26. Remove Duplicates from Sorted Array
 description: Remove duplicates from a sorted array in-place and return the count of unique elements.
 ---
 
-# 26. Remove Duplicates from Sorted Array
+# 26. Remove Duplicates from Sorted Array – Easy
 
-## Description
+## 🧾 Description
 
-Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such
-that each unique element appears only once. The relative order of the elements should be kept the
-same. Then return the number of unique elements in nums.
+Given an integer array `nums` sorted in non-decreasing order, remove the duplicates **in-place** such that each unique element appears only once. The relative order of the elements should be preserved. Return the number of unique elements (`k`), and ensure that the first `k` elements of `nums` contain the final result.
 
-Link to: https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+- It is not necessary to consider elements beyond the first `k`.
+- Your algorithm must use **O(1)** extra memory.
 
-| Parameter | Type     | Description                                                |
-| --------- | -------- | ---------------------------------------------------------- |
-| nums      | number[] | The sorted array from which duplicates need to be removed. |
+🔗 [View on LeetCode](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)
 
-## Solution
+### Example
+
+```ts
+// Expected output: 2
+removeDuplicates([1, 1, 2])
+
+// Expected output: 5
+removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4])
+```
+
+## Objetive
+
+Transform the input array so that the first `k` elements contain only the unique values from the original array in their original relative order. The rest of the array can be ignored. Return `k`.
+
+## Approach
+
+This is a two-pointer problem — a common pattern when working with sorted arrays and in-place operations.
+
+### Intuiton
+
+Since the array is sorted, all duplicates are adjacent. Our goal is to overwrite duplicates by shifting unique values to the left side of the array, without using extra space.
+
+We use two pointers:
+
+- index → Tracks the position to place the next unique value (initialized at 0).
+- i → Iterates through the array from left to right (starting at 1).
+
+On each iteration, we compare `nums[i]` with `nums[index]`. If they differ, it means we found a new unique value, so we increment `index` and assign `nums[index] = nums[i]`.
+
+### Visualization
+
+```
+Initial array:
+nums: [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
+        ↑  ↑
+     index  i
+
+Step:
+nums[0] == nums[1] → duplicate → do nothing
+
+Next:
+nums: [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
+        ↑     ↑
+     index    i
+
+nums[2] != nums[0] → unique → index++, nums[1] = nums[2]
+Updated:
+nums: [0, 1, 1, 1, 1, 2, 2, 3, 3, 4]
+           ↑     ↑
+        index     i
+```
+
+We continue this way until we reach the end of the array.
 
 ### Code
 
@@ -35,16 +84,10 @@ export const removeDuplicates = (nums: number[]): number => {
 }
 ```
 
-```ts
-// Expected: 2
-removeDuplicates([1, 1, 2])
-
-// Expected 5
-removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4])
-```
-
 ### Time Complexity
 
 | Time Complexity | Space Complexity |
 | --------------- | ---------------- |
 | O(n)            | O(1)             |
+
+## Notes
