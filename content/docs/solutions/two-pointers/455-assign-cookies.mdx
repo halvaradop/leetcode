@@ -3,20 +3,44 @@ title: 455. Assign Cookies
 description: Assign cookies to children to maximize the number of content children.
 ---
 
-# 455. Assign Cookies
+# 455. Assign Cookies – Easy
 
-## Description
+## 🧾 Description
 
-Given two arrays representing children's greed factors and cookie sizes, assign cookies to maximize the number of content children. Each child can have at most one cookie.
+You are given two integer arrays:
 
-Link to: https://leetcode.com/problems/assign-cookies/
+- `greed[]`: the greed factor of each child.
+- `cookies[]`: the size of each cookie.
 
-| Parameter | Type     | Description                        |
-| --------- | -------- | ---------------------------------- |
-| greed     | number[] | The greed factors of the children. |
-| cookies   | number[] | The sizes of the cookies.          |
+You want to assign cookies to children such that each child receives **at most one** cookie, and the cookie must have a size **greater than or equal to** the child's greed factor.
 
-## Solution
+Your goal is to maximize the number of content children.
+
+🔗 [View on LeetCode](https://leetcode.com/problems/assign-cookies/)
+
+### Example
+
+```ts
+// Expected: 1
+findContentChildren([1, 2, 3], [1, 1])
+
+// Expected: 2
+findContentChildren([1, 2], [1, 2, 3])
+```
+
+## Objective
+
+Assign cookies to as many children as possible such that each child gets a cookie that satisfies their greed. Each cookie can be used only once.
+
+Return the maximum number of content children.
+
+### Approach
+
+This is a greedy algorithm problem.
+
+### Intuition
+
+To maximize the number of content children, we should try to satisfy the least greedy children first with the smallest available cookies.
 
 ### Code
 
@@ -42,16 +66,10 @@ export const findContentChildren = (greed: number[], cookies: number[]): number 
 }
 ```
 
-```ts
-// Expected: 1
-findContentChildren([1, 2, 3], [1, 1])
-
-// Expected: 2
-findContentChildren([1, 2], [1, 2, 3])
-```
-
 ### Time Complexity
 
 | Time Complexity      | Space Complexity |
 | -------------------- | ---------------- |
 | O(n log n + m log m) | O(1)             |
+
+### Notes

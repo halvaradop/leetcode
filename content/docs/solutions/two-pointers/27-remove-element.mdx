@@ -15,13 +15,13 @@ You must achieve this with **O(1)** extra memory.
 
 ### Example
 
-````ts
+```ts
 // Expected output: 2 (array becomes [2, 2, _, _])
 removeElement([3, 2, 2, 3], 3)
 
 // Expected output: 5 (array becomes [0, 1, 4, 0, 3, _, _, _])
 removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2)
-
+```
 
 ## Objective
 
@@ -50,17 +50,16 @@ We continue this way until we reach the end of the array.
 
 ```ts
 export const removeElement = (nums: number[], val: number): number => {
-    const n = nums.length
-    let index = 0
-    for (let i = 0; i < n; i++) {
-        if (nums[i] !== val) {
-            nums[index++] = nums[i]
-        }
+  const n = nums.length
+  let index = 0
+  for (let i = 0; i < n; i++) {
+    if (nums[i] !== val) {
+      nums[index++] = nums[i]
     }
-    return index
+  }
+  return index
 }
-
-````
+```
 
 ### Time Complexity
 

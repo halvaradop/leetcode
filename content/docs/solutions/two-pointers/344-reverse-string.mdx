@@ -1,21 +1,49 @@
 ---
 title: 344. Reverse String
-description: Reverse an array of characters in-place.
+description: Reverse an array of characters in-place using O(1) extra memory.
 ---
 
-# 344. Reverse String
+# 344. Reverse String – Easy
 
-## Description
+## 🧾 Description
 
-Write a function that reverses an array of characters in-place.
+Write a function that reverses a string. The input string is given as an array of characters `s`.
 
-Link to: https://leetcode.com/problems/reverse-string/
+You must modify the array **in-place** using **O(1)** extra memory.
 
-| Parameter | Type     | Description                         |
-| --------- | -------- | ----------------------------------- |
-| str       | string[] | The array of characters to reverse. |
+🔗 [View on LeetCode](https://leetcode.com/problems/reverse-string/)
 
-## Solution
+### Example
+
+```ts
+// Expected output: ["o", "l", "l", "e", "h"]
+reverseString(["h", "e", "l", "l", "o"])
+```
+
+## Objective
+
+Reverse the input character array in-place. That is, reorder the array such that the first character becomes the last, the second becomes the second-to-last, and so on.
+
+## Approach
+
+This is a classic two-pointer problem — commonly used when needing to swap elements from both ends of a sequence.
+
+### Intuition
+
+To reverse a string in-place, we simply swap characters from the start with characters from the end until we meet in the middle.
+
+We use two pointers:
+
+- left → starts at index 0 (beginning of the array)
+- right → starts at index n - 1 (end of the array)
+
+On each iteration, we swap s[left] with s[right], then move left forward and right backward. We stop when left >= right.
+
+Since we are only swapping characters, the space complexity remains constant at O(1).
+
+### Visualization
+
+We continue this way until we reach the end of the array.
 
 ### Code
 
@@ -32,15 +60,10 @@ export const reverseString = (str: string[]): void => {
 }
 ```
 
-```ts
-// Expected: ["o","l","l","e","h"]
-const arr = ["h", "e", "l", "l", "o"]
-reverseString(arr)
-arr
-```
-
 ### Time Complexity
 
 | Time Complexity | Space Complexity |
 | --------------- | ---------------- |
 | O(n)            | O(1)             |
+
+## Notes
