@@ -34,13 +34,25 @@ Assign cookies to as many children as possible such that each child gets a cooki
 
 Return the maximum number of content children.
 
-### Approach
+## Approach
 
 This is a greedy algorithm problem.
 
 ### Intuition
 
 To maximize the number of content children, we should try to satisfy the least greedy children first with the smallest available cookies.
+
+### Strategy
+
+- Sort the greed[] array in ascending order.
+- Sort the cookies[] array in ascending order.
+- Use two pointers:
+  - i → to iterate through the greed[] array (children).
+  - j → to iterate through the cookies[] array.
+
+For each child, if there is a cookie large enough to satisfy them, assign it and move both pointers.
+
+If the cookie is too small, try the next cookie (j++).
 
 ### Code
 
