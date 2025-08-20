@@ -3,19 +3,45 @@ title: 977. Squares of a Sorted Array
 description: Return an array of the squares of each number sorted in non-decreasing order.
 ---
 
-# 977. Squares of a Sorted Array
+# 977. Squares of a Sorted Array – Easy
 
-## Description
+## 🧾 Description
 
-Given an array of integers sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order.
+Given an array of integers `nums` **sorted in non-decreasing order**, return a new array consisting of the **squares** of each number, also **sorted in non-decreasing order**.
 
-Link to: https://leetcode.com/problems/squares-of-a-sorted-array/
+🔗 [View on LeetCode](https://leetcode.com/problems/squares-of-a-sorted-array/)
 
-| Parameter | Type     | Description                   |
-| --------- | -------- | ----------------------------- |
-| nums      | number[] | The sorted array of integers. |
+### Example
 
-## Solution
+```ts
+// Expected: [0, 1, 9, 16, 100]
+sortedSquares([-4, -1, 0, 3, 10])
+
+// Expected: [4, 9, 9, 49, 121]
+sortedSquares([-7, -3, 2, 3, 11])
+```
+
+## Objective
+
+Transform the input array by squaring each number and returning a sorted array of those squares.
+
+## Approach
+
+This is a two-pointer problem that takes advantage of the fact that the input array is already sorted.
+
+### Intuition
+
+Squaring negative numbers results in positive values. The largest square values will come from the elements with the largest absolute values, which are either at the start (negative) or end (positive) of the array.
+
+To maintain sorted order, we fill a result array from the end to the beginning, always placing the largest square at the current position.
+
+### Strategy
+
+- Use two pointers: left = 0, right = n - 1.
+- Compare |nums[left]| and |nums[right]|.
+- Square the larger of the two and place it at the current position index in the result array.
+- Move pointers and index accordingly.
+- Continue until all elements are processed.
 
 ### Code
 
@@ -42,16 +68,10 @@ export const sortedSquares = (nums: number[]): number[] => {
 }
 ```
 
-```ts
-// Expected: [0,1,9,16,100]
-sortedSquares([-4, -1, 0, 3, 10])
-
-// Expected: [4,9,9,49,121]
-sortedSquares([-7, -3, 2, 3, 11])
-```
-
 ### Time Complexity
 
 | Time Complexity | Space Complexity |
 | --------------- | ---------------- |
 | O(n)            | O(n)             |
+
+## Notes
