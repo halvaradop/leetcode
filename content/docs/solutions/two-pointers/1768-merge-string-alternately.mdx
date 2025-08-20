@@ -1,0 +1,75 @@
+---
+title: 1768. Merge Strings Alternately
+description: Merge two strings by alternating characters, starting with the first string.
+---
+
+# 1768. Merge Strings Alternately – Easy
+
+## Description
+
+Given two strings `word1` and `word2`, merge them by **alternating characters**, starting with `word1`.
+
+If one string is longer than the other, append the remaining characters to the result.
+
+[View on LeetCode](https://leetcode.com/problems/merge-strings-alternately/)
+
+### Example
+
+```ts
+// Expected: "apbqrc"
+mergeAlternately("abc", "pqr")
+
+// Expected: "abpqrs"
+mergeAlternately("ab", "pqrs")
+
+// Expected: "abc"
+mergeAlternately("abc", "")
+```
+
+## Objective
+
+Return a single string formed by alternating characters from word1 and word2. Start with word1[0], then word2[0], and so on. If one word runs out of characters, append the rest of the other word.
+
+## Approach
+
+This is a two-pointer traversal problem.
+
+### Intuition
+
+We iterate through both strings in parallel. On each iteration, we add one character from each string (if available) to the result.
+
+### Strategy
+
+- Use two pointers: idx1 for word1 and idx2 for word2.
+- Loop until both pointers reach the end of their respective strings.
+- At each step, append word1[idx1] and word2[idx2] to the result if the indices are within bounds.
+- Return the final merged string.
+
+### Code
+
+```ts title="1768. Merge Strings Alternately"
+export const mergeAlternately = (word1: string, word2: string): string => {
+  let idx1 = 0
+  let idx2 = 0
+  let merge = ""
+  const n = word1.length
+  const m = word2.length
+  while (idx1 < n || idx2 < m) {
+    if (idx1 < n) {
+      merge += word1[idx1++]
+    }
+    if (idx2 < m) {
+      merge += word2[idx2++]
+    }
+  }
+  return merge
+}
+```
+
+### Time Complexity
+
+| Time Complexity | Space Complexity |
+| --------------- | ---------------- |
+| O(n + m)        | O(1)             |
+
+## Notes

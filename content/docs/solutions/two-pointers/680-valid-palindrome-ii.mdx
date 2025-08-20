@@ -1,0 +1,87 @@
+---
+title: 680. Valid Palindrome II
+description: Check if a string can be a palindrome after deleting at most one character.
+---
+
+# 680. Valid Palindrome II – Easy
+
+## Description
+
+Given a string `s`, return `true` if it can become a palindrome **after deleting at most one character**.
+
+[View on LeetCode](https://leetcode.com/problems/valid-palindrome-ii/)
+
+### Example
+
+```ts
+// Expected: true
+validPalindrome("abca")
+
+// Expected: false
+validPalindrome("abc")
+```
+
+## Objective
+
+Check whether it is possible to make the input string a palindrome by removing at most one character.
+
+## Approach
+
+This is a two-pointer problem with a conditional recursive check.
+
+### Intuition
+
+We compare characters from both ends of the string using two pointers (left and right). If the characters match, we move inward. If they don’t match, we try skipping one character — either s[left] or s[right] — and check if the remaining substring is a valid palindrome.
+
+Only one mismatch is allowed due to the "delete at most one character" condition.
+
+### Strategy
+
+Strategy
+
+- Use two pointers: left = 0 and right = n - 1.
+- If s[left] === s[right], move both pointers.
+- If s[left] !== s[right], attempt two recursive checks:
+- Is the substring s[left+1...right] a palindrome?
+- Is the substring s[left...right-1] a palindrome?
+
+If either is true, return true; otherwise, return false.
+
+### Code
+
+```ts title="680. Valid Palindrome II"
+export const validPalindrome = (str: string): boolean => {
+  const n = str.length
+  let left = 0
+  let right = n - 1
+  while (left < right) {
+    if (str[left] !== str[right]) {
+      return isPalindrome(str, left + 1, right) || isPalindrome(str, left, right - 1)
+    }
+    left++
+    right--
+  }
+  return true
+}
+
+const isPalindrome = (s: string, low: number, high: number): boolean => {
+  let left = low
+  let right = high
+  while (left < right) {
+    if (s[left] !== s[right]) {
+      return false
+    }
+    left++
+    right--
+  }
+  return true
+}
+```
+
+### Time Complexity
+
+| Time Complexity | Space Complexity |
+| --------------- | ---------------- |
+| O(n)            | O(1)             |
+
+### Notes

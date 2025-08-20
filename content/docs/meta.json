@@ -1,0 +1,6 @@
+{
+  "title": "Documentation Content",
+  "description": "This file contains metadata for the documentation content.",
+  "pages": ["index", "solutions"],
+  "defaultOpen": false
+}

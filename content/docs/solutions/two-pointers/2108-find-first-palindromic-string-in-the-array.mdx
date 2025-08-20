@@ -1,0 +1,80 @@
+---
+title: 2108. Find First Palindromic String in the Array
+description: Find the first palindromic string in an array of strings.
+---
+
+# 2108. Find First Palindromic String in the Array – Easy
+
+## Description
+
+Given an array of strings `words`, return the **first string** that is a **palindrome**. If no such string exists, return an empty string `""`.
+
+[View on LeetCode](https://leetcode.com/problems/find-first-palindromic-string-in-the-array/)
+
+### Example
+
+```ts
+// Expected: "ada"
+firstPalindrome(["abc", "car", "ada", "racecar", "cool"])
+
+// Expected: "racecar"
+firstPalindrome(["not", "a", "palindrome", "racecar"])
+
+// Expected: ""
+firstPalindrome(["hello", "world"])
+```
+
+## Objective
+
+Identify and return the first palindromic string from an input array. A string is a palindrome if it reads the same forwards and backwards.
+
+## Approach
+
+This is a simple linear scan problem with a helper function to check palindromes.
+
+### Intuition
+
+We iterate through each string in the array, and for each one, check if it’s a palindrome. As soon as we find one, we return it immediately.
+
+### Strategy
+
+- Loop through each string in the array.
+- For each string, check if it is a palindrome using a helper function.
+- Return the first one that qualifies.
+- If none are found, return an empty string.
+
+### Code
+
+```ts title="2108. Find First Palindromic String in the Array"
+export const firstPalindrome = (words: string[]): string => {
+  const n = words.length
+  for (let i = 0; i < n; i++) {
+    if (isPalindrome(words[i])) {
+      return words[i]
+    }
+  }
+  return ""
+}
+
+const isPalindrome = (word: string): boolean => {
+  const n = word.length
+  let left = 0
+  let right = n - 1
+  while (left < right) {
+    if (word[left] !== word[right]) {
+      return false
+    }
+    left++
+    right--
+  }
+  return true
+}
+```
+
+### Time Complexity
+
+| Time Complexity | Space Complexity |
+| --------------- | ---------------- |
+| O(n \* m)       | O(1)             |
+
+## Notes

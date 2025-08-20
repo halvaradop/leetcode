@@ -1,0 +1,87 @@
+---
+title: 455. Assign Cookies
+description: Assign cookies to children to maximize the number of content children.
+---
+
+# 455. Assign Cookies – Easy
+
+## Description
+
+You are given two integer arrays:
+
+- `greed[]`: the greed factor of each child.
+- `cookies[]`: the size of each cookie.
+
+You want to assign cookies to children such that each child receives **at most one** cookie, and the cookie must have a size **greater than or equal to** the child's greed factor.
+
+Your goal is to maximize the number of content children.
+
+[View on LeetCode](https://leetcode.com/problems/assign-cookies/)
+
+### Example
+
+```ts
+// Expected: 1
+findContentChildren([1, 2, 3], [1, 1])
+
+// Expected: 2
+findContentChildren([1, 2], [1, 2, 3])
+```
+
+## Objective
+
+Assign cookies to as many children as possible such that each child gets a cookie that satisfies their greed. Each cookie can be used only once.
+
+Return the maximum number of content children.
+
+## Approach
+
+This is a greedy algorithm problem.
+
+### Intuition
+
+To maximize the number of content children, we should try to satisfy the least greedy children first with the smallest available cookies.
+
+### Strategy
+
+- Sort the greed[] array in ascending order.
+- Sort the cookies[] array in ascending order.
+- Use two pointers:
+  - i → to iterate through the greed[] array (children).
+  - j → to iterate through the cookies[] array.
+
+For each child, if there is a cookie large enough to satisfy them, assign it and move both pointers.
+
+If the cookie is too small, try the next cookie (j++).
+
+### Code
+
+```ts title="455. Assign Cookies"
+export const findContentChildren = (greed: number[], cookies: number[]): number => {
+  let idxGreed = 0
+  let idxCookies = 0
+  const n = greed.length
+  const m = cookies.length
+  let countContentChildren = 0
+  greed.sort((x, y) => x - y)
+  cookies.sort((x, y) => x - y)
+  while (idxGreed < n && idxCookies < m) {
+    if (cookies[idxCookies] >= greed[idxGreed]) {
+      idxGreed++
+      idxCookies++
+      countContentChildren++
+    } else {
+      idxCookies++
+    }
+  }
+  return countContentChildren
+}
+```
+
+### Time Complexity
+
+| Time Complexity      | Space Complexity |
+| -------------------- | ---------------- |
+| O(n log n + m log m) | O(1)             |
+
+### Notes

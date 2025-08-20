@@ -1,0 +1,96 @@
+---
+title: 2570. Merge Two 2D Arrays by Summing Values
+description: Merge two 2D arrays by summing values with the same first element.
+---
+
+# 2570. Merge Two 2D Arrays by Summing Values – Easy
+
+## Description
+
+You are given two 2D arrays `nums1` and `nums2`, where each array contains pairs of integers in the format `[id, value]`. Both arrays are sorted in ascending order by `id`.
+
+Return a new array by **merging** the two input arrays. If an `id` exists in both arrays, **sum their values**. The result should also be **sorted** by `id`.
+
+[View on LeetCode](https://leetcode.com/problems/merge-two-2d-arrays-by-summing-values/)
+
+### Example
+
+```ts
+// Expected: [[1,4],[2,5],[3,7]]
+mergeArrays(
+  [
+    [1, 2],
+    [2, 3],
+    [3, 4],
+  ],
+  [
+    [1, 2],
+    [3, 3],
+  ],
+)
+```
+
+## Objective
+
+Merge two sorted 2D arrays by id. When the same id appears in both arrays, their values are added. When the id exists in only one array, the [id, value] is included directly.
+
+## Approach
+
+This is a two-pointer merge problem — commonly used when merging sorted lists.
+
+### Intuition
+
+Because both input arrays are sorted, we can process them efficiently with two pointers without using extra sorting or hash maps.
+
+### Strategy
+
+- Initialize two pointers idx1 and idx2 for nums1 and nums2.
+- Traverse both arrays:
+  - If the IDs are equal → sum the values.
+  - If one ID is smaller → push the current entry and advance that pointer.
+
+- After the loop, append any remaining elements from either array.
+
+This ensures the result remains sorted and covers all IDs.
+
+### Code
+
+```ts title="2570. Merge Two 2D Arrays by Summing Values"
+export const mergeArrays = (nums1: number[][], nums2: number[][]): number[][] => {
+  let idx2 = 0
+  let idx1 = 0
+  const merge = []
+  const n = nums1.length
+  const m = nums2.length
+  while (idx1 < n && idx2 < m) {
+    if (nums1[idx1][0] === nums2[idx2][0]) {
+      merge.push([nums1[idx1][0], nums1[idx1][1] + nums2[idx2][1]])
+      idx1++
+      idx2++
+    } else if (nums1[idx1][0] < nums2[idx2][0]) {
+      merge.push([nums1[idx1][0], nums1[idx1][1]])
+      idx1++
+    } else {
+      merge.push([nums2[idx2][0], nums2[idx2][1]])
+      idx2++
+    }
+  }
+  while (idx1 < n) {
+    merge.push([nums1[idx1][0], nums1[idx1][1]])
+    idx1++
+  }
+  while (idx2 < m) {
+    merge.push([nums2[idx2][0], nums2[idx2][1]])
+    idx2++
+  }
+  return merge
+}
+```
+
+### Time Complexity
+
+| Time Complexity | Space Complexity |
+| --------------- | ---------------- |
+| O(n + m)        | O(n + m)         |
+
+## Notes
